@@ -10,6 +10,8 @@ To set up KaliGPT, follow these steps:
 
 ```bash
 git clone https://github.com/aymanaljunaid/KaliGPT.git
+```
+```bash
 cd KaliGPT
 ```
 
