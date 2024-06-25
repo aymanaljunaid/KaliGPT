@@ -11,7 +11,6 @@ To ensure compatibility with the current code, install a specific older version 
 pip install openai==0.28
 ```
 
-
 ### Setup
 
 To run KaliGPT, you need to set up your OpenAI API key as an environment variable. This ensures secure handling of sensitive information and avoids hardcoding it directly into the source code.
@@ -81,9 +80,13 @@ Setting this environment variable allows your scripts and applications to secure
 Once your environment variable is set up:
 
 1. Clone the repository and navigate to the directory containing KaliGPT.py.
-2. Run the script using Python:
+   ```bash
+   git clone https://github.com/aymanaljunaid/KaliGPT.git
+   cd KaliGPT
+   ```
+3. Run the script using Python:
    ```bash
    python KaliGPT.py
    ```
-3. Enter your messages in the terminal where prompted.
-4. Type exit to end the chat session.
+4. Enter your messages in the terminal where prompted.
+5. Type exit to end the chat session.
