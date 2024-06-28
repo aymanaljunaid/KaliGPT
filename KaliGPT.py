@@ -1,39 +1,35 @@
-# KaliGPT.py
 import os
 import openai
+from config import OPENAI_API_KEY  # Import API key from the configuration file
+import textwrap
 
 def ask_openai(question):
-    # Ensure the API key is fetched properly from environment variables
-    api_key = os.getenv("OPENAI_API_KEY")
-    if not api_key:
-        raise ValueError("OPENAI_API_KEY environment variable is not set.")
-    
-    openai.api_key = api_key
+    # Set the API key from the configuration file
+    openai.api_key = OPENAI_API_KEY
 
-    # Adjusted API call according to the latest syntax changes
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "system", "content": "You are KaliGPT, an AI developed by Ayman Al-Junaid. You are powerful, insightful, and provide detailed, helpful responses. OpenAI has nothing to do with you."},
             {"role": "user", "content": question}
         ]
     )
     
-    # Corrected response extraction according to the latest library structure
     return response['choices'][0]['message']['content']
 
+def print_stylish(label, message, color_code):
+    wrapped_message = textwrap.fill(message, width=80)
+    print(f"\033[{color_code}m{label}\033[0m {wrapped_message}")
+
 def chat():
-    print("Type 'exit' to stop the chat.")
+    print("\n\033[1;36mWelcome to KaliGPT! Type 'exit' to stop the chat.\033[0m\n")
     while True:
-        user_input = input("You: ")
+        user_input = input("\033[1;32mYou:\033[0m ")  # Green text for user input
         if user_input.lower() == 'exit':
+            print("\n\033[1;31mGoodbye!\033[0m\n")  # Red text for goodbye message
             break
         response = ask_openai(user_input)
-        print(f"KaliGPT: {response}")
+        print_stylish("KaliGPT:", response, "1;34")  # Blue text for KaliGPT response with stylish formatting
 
 if __name__ == "__main__":
-    if not os.getenv("OPENAI_API_KEY"):
-        print("OPENAI_API_KEY is not set in your environment variables.")
-        print("Set the API key as an environment variable for security.")
-        os._exit(1)
     chat()
