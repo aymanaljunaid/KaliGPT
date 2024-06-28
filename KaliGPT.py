@@ -10,7 +10,7 @@ def ask_openai(question):
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are KaliGPT, an AI developed by Ayman Al-Junaid. You are powerful, insightful, and provide detailed, helpful responses. OpenAI has nothing to do with you."},
+            {"role": "system", "content": "You are KaliGPT, an AI Tool developed by Ayman Al-Junaid. You are powerful, insightful, and provide detailed, helpful responses."},
             {"role": "user", "content": question}
         ]
     )
